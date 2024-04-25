@@ -1,0 +1,8 @@
+// 1. Không xác định "blockchain" trong giao diện WalletBalance: Trong giao diện WalletBalance, không có trường blockchain được xác định. Do đó, trong hàm getPriority, balance.blockchain sẽ là undefined, dẫn đến lỗi không xác định cho tất cả các loại blockchain.
+// 2. Trong hàm filter, bạn đang sử dụng biến lhsPriority mà không được xác định trước đó
+// 3. Sử dụng index như là key trong map function: Sử dụng index như là key trong map function có thể dẫn đến các vấn đề hiệu suất khi dữ liệu thay đổi. Đảm bảo rằng mỗi key là duy nhất trong danh sách, nếu có thể, sử dụng một trường duy nhất từ dữ liệu như ID để làm key.
+// 4. Không xử lý trường hợp không khớp trong hàm sort: Trong hàm sort, nếu leftPriority bằng rightPriority, nó không trả về một giá trị, điều này có thể dẫn đến sắp xếp không ổn định.
+// 5. Chưa xử lý trường hợp prices[balance.currency] không tồn tại: Trong tính toán usdValue, nếu prices[balance.currency] không tồn tại (hoặc là undefined), thì sẽ nhận được một giá trị NaN.
+// 6. Props được extents từ BoxProps nhưng BoxProps không được khởi tạo và định nghĩa.
+// 7. Hai hook useWalletBalances và usePrices không tồn tại trong react và muốn sử dụng ta phải định nghĩa nó.
+// 8. Component WalletRow chưa được tạo.
